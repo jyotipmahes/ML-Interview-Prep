@@ -34,6 +34,20 @@ Repository for Machine Learning Engineer (MLE) interview preparation materials a
   12. **Edit Distance & Word Error Rate (WER)** (1D Space-Optimized DP / LC 72)
   13. **Image Rotation by Arbitrary Angle** (Inverse Coordinate Mapping & Bilinear Interpolation)
 
+- **[`AI_Assisted_Coding_Interview_Guide.ipynb`](./AI_Assisted_Coding_Interview_Guide.ipynb)**: Practical implementation and AI-assisted coding patterns (asked in companies like **Shopify**, **LinkedIn**, **Meta**, and similar tech organizations, with many other companies adopting comparable pair-programming or progressive implementation formats) featuring stateful simulation, robot navigation, game state machines, and progressive class design in **pure Python** (standard library only):
+  1. **Mars Rover / Grid Robot Command Engine** (Cardinal directions, ray-step obstacle collision avoidance, jump distance, and undo action history)
+  2. **Blind-Grid Robot Room Cleaner** (Sensory API exploration, virtual coordinate tracking, and blind DFS backtracking with physical orientation restoration)
+  3. **Cleaning Robot with Cycle Detection** (Deterministic matrix navigation, obstacle/boundary reflection, and state-space cycle detection)
+  4. **Snake Game Engine with Growth & Collision** (`deque` body representation, sequential food ingestion, and tail-vacation vs. head collision order)
+  5. **Connect Four / Tic-Tac-Toe with $\mathcal{O}(1)$ Win Checking** (Dynamic counter vectors for rows, columns, and diagonals with $\mathcal{O}(1)$ win evaluation)
+  6. **Battleship Fleet Coordinator** (Grid coordinate validation, multi-deck ship geometry, shot hit/miss tracking, and fleet sinking coordinator)
+  7. **In-Memory Key-Field Database with TTL & Backup/Restore** (Progressive 4-level architecture: CRUD, prefix scan, temporal TTL expiration, and remaining TTL restore)
+  8. **Cloud Storage Manager with User Quotas & Auto-Eviction** (File indexing, user quota enforcement, largest-first tie-broken auto-eviction, and file compression)
+  9. **Text Editor with Undo/Redo & Find/Replace** (Cursor navigation, buffer slicing, regex pattern replace count, and transactional command dual-stack undo/redo)
+  10. **Multi-Account Financial Ledger with Atomic Rollbacks** (Double-entry transaction ledger, point-in-time binary search balance queries, and atomic transfer rollback)
+  11. **Sliding Window Log & Token Bucket Rate Limiter** (Per-client timestamp window log pruning and continuous fractional refill token bucket)
+  12. **DAG Task Execution Engine with Dependency Resolution** (Directed acyclic graph, Kahn's topological sort, circular cycle detection, and task output piping)
+
 ---
 
 ## 🚀 Upcoming Additions
