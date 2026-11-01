@@ -19,6 +19,21 @@ Repository for Machine Learning Engineer (MLE) interview preparation materials a
   8. **Low-Rank Adaptation (LoRA)** (PEFT module with initialization trap handling & weight merging)
   9. **Byte-Pair Encoding (BPE)** (Subword tokenizer with pair-frequency statistics and greedy merging)
 
+- **[`ML_LeetCode_Interview_Guide.ipynb`](./ML_LeetCode_Interview_Guide.ipynb)**: LeetCode-style algorithmic questions intersecting with Machine Learning, Probability, Retrieval, and Computer Vision in **pure Python** (no NumPy/PyTorch, standard library only):
+  1. **Weighted Random Sampling** (Prefix Sums + Binary Search / LC 528)
+  2. **Reservoir Sampling** (Uniform Streaming with $\mathcal{O}(1)$ Memory / LC 382 & LC 398)
+  3. **Sort Transformed Array** (Convex Quadratic Parabola & Two Pointers / LC 360)
+  4. **Find Minimum of a Convex Function** (Ternary Search & Divide-and-Conquer)
+  5. **Expected Calibration Error (ECE)** (Bucket Binning & Reliability Gaps)
+  6. **Exact ROC-AUC with Tie Handling** (Wilcoxon Rank-Sum Statistic & Fractional Ties)
+  7. **Precision-Recall Curve & Average Precision** (Sweep-Line Threshold Integration)
+  8. **Dot Product of Two Sparse Vectors** (Two Pointers & Binary Search for Imbalance / LC 1570)
+  9. **Top-K Cosine Similarity Retrieval** (Min-Heap with `heapq` in $\mathcal{O}(N \log K)$)
+  10. **TF-IDF & Inverted Index Document Retrieval** (Lexical Search & Smoothed IDF)
+  11. **Streaming Running Median** (Dual Heaps in $\mathcal{O}(\log N)$ / LC 295)
+  12. **Edit Distance & Word Error Rate (WER)** (1D Space-Optimized DP / LC 72)
+  13. **Image Rotation by Arbitrary Angle** (Inverse Coordinate Mapping & Bilinear Interpolation)
+
 ---
 
 ## 🚀 Upcoming Additions
