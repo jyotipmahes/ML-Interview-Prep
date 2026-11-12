@@ -301,12 +301,12 @@ Before writing a graph algorithm, establish these 5 properties:
 ```mermaid
 flowchart TD
     Start["Graph Problem"] --> Weighted{"Weighted Edges?"}
-    Weighted -->|Unweighted / Unit Cost| BFS["BFS: O(V + E)"]
-    Weighted -->|Weights in {0, 1}| ZeroOne["0-1 BFS with Deque: O(V + E)"]
-    Weighted -->|Weights >= 0| Dijkstra["Dijkstra with Min-Heap: O(E log V)"]
+    Weighted -->|Unweighted or Unit Cost| BFS["BFS: O(V + E)"]
+    Weighted -->|Weights are 0 or 1| ZeroOne["0-1 BFS with Deque: O(V + E)"]
+    Weighted -->|Non-Negative Weights| Dijkstra["Dijkstra with Min-Heap: O(E log V)"]
     Weighted -->|Negative Weights Allowed| Bellman["Bellman-Ford: O(V * E)"]
     Start -->|All-Pairs Shortest Path| APSP{"Scale of V?"}
-    APSP -->|V <= 400| Floyd["Floyd-Warshall: O(V^3)"]
+    APSP -->|V up to 400| Floyd["Floyd-Warshall: O(V^3)"]
     APSP -->|Large V, Sparse E| Johnson["Johnson's Algorithm: O(V^2 log V + VE)"]
 ```
 
