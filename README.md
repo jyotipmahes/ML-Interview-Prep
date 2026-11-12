@@ -48,6 +48,16 @@ Repository for Machine Learning Engineer (MLE) interview preparation materials a
   11. **Sliding Window Log & Token Bucket Rate Limiter** (Per-client timestamp window log pruning and continuous fractional refill token bucket)
   12. **DAG Task Execution Engine with Dependency Resolution** (Directed acyclic graph, Kahn's topological sort, circular cycle detection, and task output piping)
 
+### Available Guides & Playbooks
+
+- **[`LeetCode_Patterns_and_Constraint_Shifts.md`](./LeetCode_Patterns_and_Constraint_Shifts.md)**: A comprehensive reference guide and quick-review playbook detailing algorithmic problem patterns, constraint shifts, and complexity trade-offs for technical coding interviews:
+  - **Constraint-to-Budget Engine**: Determining target Big-O from input size `N` (`10^8` operations/sec rule, `N <= 20` exponential vs. `N >= 100,000` linear/logarithmic).
+  - **The Master Invariant Principle**: How breaking or granting core assumptions (sortedness, monotonicity, non-negativity, history-freeness, bounded values) transforms optimal data structures and complexity classes.
+  - **Master Constraint-Shift Reference Matrix**: Direct transition mappings across searching, two-sum, subarray sums, sequences, dynamic queries, knapsack, shortest paths, and streaming.
+  - **Pattern Deep Dives**: Subarrays vs. substrings vs. subsequences vs. subsets, binary search on the answer space, monotonic stacks/deques, DFS vs. BFS selection and space/memory trade-offs (balanced vs. skewed tree geometry, unweighted shortest paths vs. exhaustive backtracking), the graph shortest-path ladder, node reuse vs. simple paths, DP loop inversions and memoization soundness, interval sweep-line, memory-bounded streaming sketches, and non-comparison sorting.
+  - **P, NP, NP-Complete & The 5 Escape Hatches**: Practical strategies when facing NP-hard problems (small-`N` bitmask DP, pseudo-polynomial DP, approximations, heuristics, structural restrictions).
+  - **Hidden Complexity Traps & 60-Second Triage Funnel**: Common pitfalls inside loops and a repeatable framework to analyze and articulate solutions under interview pressure.
+
 ---
 
 ## 🚀 Upcoming Additions
