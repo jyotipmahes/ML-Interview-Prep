@@ -312,7 +312,9 @@ flowchart TD
         U_Norm["L2 Normalization"]
         U_Vec["User Vector u ∈ R^d"]
         
-        U_Feat --> U_Dense --> U_Norm --> U_Vec
+        U_Feat --> U_Dense
+        U_Dense --> U_Norm
+        U_Norm --> U_Vec
     end
 
     subgraph ItemTower ["Candidate / Item Tower g(i)"]
@@ -321,7 +323,9 @@ flowchart TD
         I_Norm["L2 Normalization"]
         I_Vec["Item Vector v ∈ R^d"]
         
-        I_Feat --> I_Dense --> I_Norm --> I_Vec
+        I_Feat --> I_Dense
+        I_Dense --> I_Norm
+        I_Norm --> I_Vec
     end
 
     U_Vec --> Dot["Inner Product / Cosine Similarity<br/>s(u, i) = ⟨u, v⟩"]
@@ -537,7 +541,7 @@ When a query $u$ arrives, we do not decompress the PQ codes. Instead:
 2.  Precompute an $M \times 256$ lookup table containing the distance from each query sub-vector $u_m$ to all 256 centroids of that subspace.
 3.  Compute the distance to any item in the catalog via **$M$ simple table lookups and additions**, with zero vector-vector multiplications:
 
-$$\text{Dist}(u, v) \approx \sum_{m=1}^M \text{Table}_m[\text{PQ\_Code}(v)_m]$$
+$$\text{Dist}(u, v) \approx \sum_{m=1}^M \text{Table}_m[\text{PQCode}(v)_m]$$
 
 #### Google SCaNN: Anisotropic Vector Quantization
 Standard Product Quantization minimizes $L_2$ reconstruction error: $\|v - \tilde{v}\|_2^2$. However, in recommendation retrieval, we care about **Maximum Inner Product Search (MIPS)**: $\langle u, v \rangle$, not $L_2$ distance.
@@ -574,15 +578,21 @@ While IVF-PQ is the king of memory compression, **HNSW (Hierarchical Navigable S
 ```mermaid
 flowchart TD
     subgraph Layer2 ["Layer 2 (Express Lane / Long Hops)"]
-        L2_1["Node A"] ------> L2_2["Node G"]
+        L2_1["Node A"] --> L2_2["Node G"]
     end
     
     subgraph Layer1 ["Layer 1 (Medium Hops)"]
-        L1_1["Node A"] ---> L1_2["Node D"] ---> L1_3["Node G"]
+        L1_1["Node A"] --> L1_2["Node D"]
+        L1_2 --> L1_3["Node G"]
     end
     
     subgraph Layer0 ["Layer 0 (Dense Layer / Short Hops)"]
-        L0_1["Node A"] -> L0_2["Node B"] -> L0_3["Node C"] -> L0_4["Node D"] -> L0_5["Node E"] -> L0_6["Node F"] -> L0_7["Node G"]
+        L0_1["Node A"] --> L0_2["Node B"]
+        L0_2 --> L0_3["Node C"]
+        L0_3 --> L0_4["Node D"]
+        L0_4 --> L0_5["Node E"]
+        L0_5 --> L0_6["Node F"]
+        L0_6 --> L0_7["Node G"]
     end
     
     Enter["Query Entry"] --> L2_1
@@ -604,7 +614,7 @@ flowchart TD
 
 In real production systems, you almost never query an unconstrained vector index. A recommendation request comes with heavy business and privacy filters:
 *   *LinkedIn Job Search:* Candidate must be in "San Francisco", have "Python" skill, and company cannot be their current employer.
-*   *E-commerce:* Item must be "In Stock", "Ships within 24 hours", and priced "under \$50".
+*   *E-commerce:* Item must be "In Stock", "Ships within 24 hours", and priced under 50 USD.
 
 This introduces the **Metadata Filtering Dilemma**:
 

@@ -178,7 +178,7 @@ In industrial recommendation systems, tabular data dominates. Models must proces
 ```mermaid
 flowchart TD
     subgraph RawFeatures ["Raw Input Feature Space"]
-        Dense["1. Continuous / Dense Signals<br/>- User Historical CTR (0.042)<br/>- Video Duration (184s)<br/>- Item Price ($19.99)<br/>- Raw View & Impression Counts"]
+        Dense["1. Continuous / Dense Signals<br/>- User Historical CTR (0.042)<br/>- Video Duration (184s)<br/>- Item Price (19.99 USD)<br/>- Raw View & Impression Counts"]
         Sparse["2. High-Cardinality Sparse IDs<br/>- User ID (1 Billion)<br/>- Item ID (100 Million)<br/>- Search Query Tokens<br/>- Category & Tag IDs<br/>- Creator / Merchant ID"]
         Context["3. Context & Cross Signals<br/>- Device OS & Network Connection<br/>- Time of Day / Day of Week<br/>- User Country x Item Language<br/>- Historical Co-occurrence Matrix"]
     end
@@ -201,7 +201,7 @@ flowchart TD
 #### Preprocessing Dense Features:
 *   **Log-Transform & Normalization:** Real-world counters (e.g., historical impression count) follow extreme power-law distributions. A viral video has $100\text{M}$ views; a new video has $2$. Raw values destroy gradient descent. Apply non-linear scaling:
     $$x_{\text{norm}} = \log(1 + x) \quad \text{or} \quad x_{\text{norm}} = \frac{x - \mu}{\sigma}$$
-*   **Quantile Bucketization:** Discretize continuous features into $B$ discrete buckets (e.g., 100 quantiles) and project each bucket into an embedding table. This allows the model to learn non-linear step functions (e.g., price sensitivity jumps at \$10 and \$20).
+*   **Quantile Bucketization:** Discretize continuous features into $B$ discrete buckets (e.g., 100 quantiles) and project each bucket into an embedding table. This allows the model to learn non-linear step functions (e.g., price sensitivity jumps at `$10` and `$20`).
 
 ### 3.2 Terabyte Embedding Tables, Hash Collisions & Dynamic Eviction
 
@@ -472,9 +472,12 @@ flowchart TD
     end
 
     subgraph SparseFlow ["Sparse Categorical Pipeline (Model Parallelism)"]
-        Sparse1["Categorical ID 1"] --> Emb1["Embedding Table 1"] --> SVec1["Sparse Vector s_1 ∈ R^d"]
-        Sparse2["Categorical ID 2"] --> Emb2["Embedding Table 2"] --> SVec2["Sparse Vector s_2 ∈ R^d"]
-        SparseM["Categorical ID M"] --> EmbM["Embedding Table M"] --> SVecM["Sparse Vector s_M ∈ R^d"]
+        Sparse1["Categorical ID 1"] --> Emb1["Embedding Table 1"]
+        Emb1 --> SVec1["Sparse Vector s_1 ∈ R^d"]
+        Sparse2["Categorical ID 2"] --> Emb2["Embedding Table 2"]
+        Emb2 --> SVec2["Sparse Vector s_2 ∈ R^d"]
+        SparseM["Categorical ID M"] --> EmbM["Embedding Table M"]
+        EmbM --> SVecM["Sparse Vector s_M ∈ R^d"]
     end
 
     DenseVec --> InterAction["Explicit Dot-Product Interaction Layer"]
@@ -567,8 +570,10 @@ flowchart TD
         M_In --> G2["Softmax Gate 2"]
         M_Exp --> Mix1["Dynamic Weighted Sum 1"]
         M_Exp --> Mix2["Dynamic Weighted Sum 2"]
-        G1 --> Mix1 --> HeadA["Head: Click"]
-        G2 --> Mix2 --> HeadB["Head: Share"]
+        G1 --> Mix1
+        Mix1 --> HeadA["Head: Click"]
+        G2 --> Mix2
+        Mix2 --> HeadB["Head: Share"]
     end
 ```
 
