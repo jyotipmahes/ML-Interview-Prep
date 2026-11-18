@@ -6,6 +6,14 @@ Repository for Machine Learning Engineer (MLE) interview preparation materials a
 
 ## 📌 Current Status
 
+### 🏛️ Machine Learning System Design (MLSD) Master Tracks
+
+- **[`System_Design/README.md`](./System_Design/README.md)**: Staff-level architectural blueprints, mathematical foundations, and production failure mode analysis for Tier-1 ML System Design rounds (Meta, Google, LinkedIn, Netflix, Pinterest, ByteDance).
+  - **Track 01: Recommendation Systems (6-Part Master Architecture)**:
+    - **[`Part 1: Candidate Retrieval & Vector Space Intelligence`](./System_Design/01_Recommendation_Systems/Part_1_Retrieval_and_Candidate_Generation.md)**: 4-stage funnel latency SLAs ($15\text{ms}$), classical CF (Funk SVD, SVD++, Implicit ALS Spark sparsity trick $Q^T C_u Q$, BPR pairwise loss), Deep Two-Tower contrastive encoders (InfoNCE, LogQ popularity correction derivation, 80/20 hard negative curriculum, temperature $\tau$), ANN vector indexing (IVF-PQ residual math, HNSW graphs, Google SCaNN MIPS loss, 6-way Vector DB matrix), the "Metadata Filtering Dilemma" (LinkedIn GPU Exhaustive + RAR in $<1.5\text{ms}$), Pinterest PinnerSage/PinSage & LinkedIn PYMK, and Generative Retrieval with Semantic IDs via RQ-VAE (TIGER) & YouTube PLUM (2025).
+    - **[`Part 2: Pre-Ranking (L1) & Heavy Ranking (L2) Scoring Engine`](./System_Design/01_Recommendation_Systems/Part_2_Ranking_PreRanking_and_Feature_Engineering.md)**: Pre-Ranking L1 architectural dilemmas & the "Feature Availability Trap" ($30-60\text{ms}$ network fetch), Pinterest Root-Leaf serving topology, high-cardinality terabyte embedding tables, Facebook 2014 GBDT+LR, Google Wide & Deep, Deep & Cross Network (DCN-v1 rank-1 bottleneck vs. DCN-v2 full-rank matrix math, Stacked vs. Parallel architectures, Low-Rank MoE), Meta DLRM distributed scaling (Model Parallelism on GPU VRAM with All-to-All vs. Data Parallelism with All-Reduce), Multi-Task Learning (Shared-Bottom $\to$ MMoE $\to$ PLE), decoupling training loss weights from real-time serving Value Functions ($V = \sum w_k \hat{p}_k$), Group AUC (GAUC), and Expected Calibration Error (ECE).
+    - *Upcoming:* Part 3 (Sequential Transformers & Loss Engineering), Part 4 (Re-Ranking, Diversity & Slate Optimization), Part 5 (Generative RecSys HSTU & Real-Time Ops), Part 6 (Industrial Architectures & 45-Min Staff Interview Playbook).
+
 ### Available Notebooks
 
 - **[`MLE_Coding_Interview_Guide.ipynb`](./MLE_Coding_Interview_Guide.ipynb)**: From-scratch implementations of core MLE coding interview algorithms with mathematical formulations, interview tips, and verification tests:
